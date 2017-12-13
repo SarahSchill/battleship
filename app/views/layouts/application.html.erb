@@ -4,9 +4,11 @@
     <title>Battleship</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "index.css"%>
+    <%= javascript_include_tag "index.js" %>
+    <%= javascript_include_tag "gamePage.js" %>
   </head>
+
 
   <body>
     <%= yield %>

@@ -2,8 +2,12 @@ Given("I am on the home page") do
   visit root_path
 end
 
+#When(/^I click on the "([^"]*)" button$/) do |string|
+#  click_button(string)
+#end
+
 When(/^I click on the "([^"]*)" link$/) do |page_name|
-  click_button('startButton')
+  click_link page_name
 end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page_name|
@@ -11,5 +15,5 @@ Then(/^I should be on the "([^"]*)" page$/) do |page_name|
 end
 
 Then(/^I should see the "([^"]*)" field$/) do |field_name|
-  expect(page).to have_field(field_name, :type => 'textarea', :disabled => true)
+  expect(page).to have_field(field_name)
 end

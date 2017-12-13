@@ -4,7 +4,11 @@
   <head>
     <meta charset="UTF-8">
     <title>PracticeBattleship</title>
-    <link rel="stylesheet" type="text/css" href="gamePage.css">
+    <!-- <link rel="stylesheet" type="text/css" href="gamePage.css"> -->
+    <% content_for :head do %>
+    <%= stylesheet_link_tag "gamePage" %>
+    <%= javascript_include_tag "gamePage.js" %>
+    <% end %>
     <script type="text/javascript" src="gamePage.js"></script>
   </head>
 
@@ -12,7 +16,6 @@
 
     <header>
       <img src="/assets/Title.png" alt="Title" class="title">
-      <h1>GamePage</h1>
       <!--475 100-->
     </header>
 
@@ -31,6 +34,7 @@
     <table>
         <tr>
         <th> </th>
+        <th>0</th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -40,161 +44,166 @@
         <th>7</th>
         <th>8</th>
         <th>9</th>
-        <th>10</th>
       </tr>
 
       <tr>
         <td class="ycoord">A</td>
-        <td class="grid"><button type="button" id="splash" class="coord">A1</button></td>
-        <td class="grid"><button type="button" id="smoke" class="coord">A2</button></td>
-        <td class="grid"><button type="button" id="explode" class="coord">A3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A4" class="coord">A4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A5" class="coord">A5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A6" class="coord">A6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A7" class="coord">A7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A8" class="coord">A8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A9" class="coord">A9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="A10" class="coord">A10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="transparentBG();" type="button" value="A0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" type="button" value="A1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" type="button" value="A2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="flyPlane();" type="button" value="A3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="aiTurn();" type="button" value="A4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="yourTurn();" type="button" value="A5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="flyPlane2();" type="button" value="A6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="A7" onclick="submitBoxValue(value)" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" type="button" value="A8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" type="button" value="A9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">B</td>
-        <td class="grid"><button type="button" onmouseover="playclip();" onclick="playclip2();" class="coord">B1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B2" class="coord">B2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B3" class="coord">B3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B4" class="coord">B4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B5" class="coord">B5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B6" class="coord">B6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B7" class="coord">B7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B8" class="coord">B8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B9" class="coord">B9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="B10" class="coord">B10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B1" class="coord" id = "botBox10">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B2" class="coord" id = "botBox11">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B3" class="coord" id = "botBox12">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B4" class="coord" id = "botBox13">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B5" class="coord" id = "botBox14">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B6" class="coord" id = "botBox15">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B7" class="coord" id = "botBox16">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B8" class="coord" id = "botBox17">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="B9" class="coord" id = "botBox18">&nbsp</button></td>
+        <td class="grid"><button type="button" onmouseover="playclip();" onclick="playclip2();" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">C</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C1" class="coord">C1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C2" class="coord">C2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C3" class="coord">C3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C4" class="coord">C4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C5" class="coord">C5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C6" class="coord">C6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C7" class="coord">C7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C8" class="coord">C8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C9" class="coord">C9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="C10" class="coord">C10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="C9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">D</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D1" class="coord">D1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D2" class="coord">D2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D3" class="coord">D3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D4" class="coord">D4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D5" class="coord">D5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D6" class="coord">D6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D7" class="coord">D7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D8" class="coord">D8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D9" class="coord">D9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="D10" class="coord">D10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="D9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">E</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E1" class="coord">E1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E2" class="coord">E2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E3" class="coord">E3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E4" class="coord">E4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E5" class="coord">E5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E6" class="coord">E6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E7" class="coord">E7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E8" class="coord">E8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E9" class="coord">E9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="E10" class="coord">E10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="E9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">F</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F1" class="coord">F1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F2" class="coord">F2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F3" class="coord">F3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F4" class="coord">F4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F5" class="coord">F5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F6" class="coord">F6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F7" class="coord">F7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F8" class="coord">F8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F9" class="coord">F9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="F10" class="coord">F10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="F9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">G</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G1" class="coord">G1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G2" class="coord">G2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G3" class="coord">G3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G4" class="coord">G4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G5" class="coord">G5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G6" class="coord">G6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G7" class="coord">G7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G8" class="coord">G8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G9" class="coord">G9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="G10" class="coord">G10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="G9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">H</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H1" class="coord">H1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H2" class="coord">H2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H3" class="coord">H3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H4" class="coord">H4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H5" class="coord">H5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H6" class="coord">H6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H7" class="coord">H7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H8" class="coord">H8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H9" class="coord">H9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="H10" class="coord">H10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="H9" class="coord">&nbsp</button></td>
       </tr>
 
        <tr>
         <td class="ycoord">I</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I1" class="coord">I2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I2" class="coord">I2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I3" class="coord">I3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I4" class="coord">I4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I5" class="coord">I5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I6" class="coord">I6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I7" class="coord">I7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I8" class="coord">I8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I9" class="coord">I9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="I10" class="coord">I10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I2" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="I9" class="coord">&nbsp</button></td>
       </tr>
 
       <tr>
         <td class="ycoord">J</td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J1" class="coord">J1</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J2" class="coord">J2</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J3" class="coord">J3</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J4" class="coord">J4</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J5" class="coord">J5</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J6" class="coord">J6</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J7" class="coord">J7</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J8" class="coord">J8</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J9" class="coord">J9</button></td>
-        <td class="grid"><button onmouseover="playclip();" type="button" value="J10" class="coord">J10</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J0" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J1" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J2" class="coord" onclick="flyPlane();">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J3" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J4" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J5" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J6" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J7" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J8" class="coord">&nbsp</button></td>
+        <td class="grid"><button onmouseover="playclip();" onclick="playerTurn(this.value);" type="button" value="J9" class="coord">&nbsp</button></td>
       </tr>
 
   </table>
   </div>
-
-  <div id="shipWindow">
-      <button type="button" onmouseover="playclip();" onclick="shipSubmit();" id="shipSubmit">Submit</button>
+  
+  <div>
+    <img src="/assets/jet.png" alt="Jet" id="jet">
+  </div>
+  
+  <div>
+    <img src="/assets/jet2.png" alt="Jet2" id="jet2">
   </div>
 
-
-  <div id="divGrid2">
-  <table id="layoutGrid">
+  </main>
+  
+   <div id="wholeGrid2">
+  <table id="table3">
         <tr>
         <th> </th>
+        <th>0</th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -204,11 +213,174 @@
         <th>7</th>
         <th>8</th>
         <th>9</th>
-        <th>10</th>
       </tr>
 
       <tr>
         <td class="ycoord">A</td>
+        <td class="grid3" id = "box00">&nbsp</td>
+        <td class="grid3" id = "box01">&nbsp</td>
+        <td class="grid3" id = "box02">&nbsp</td>
+        <td class="grid3" id = "box03">&nbsp</td>
+        <td class="grid3" id = "box04">&nbsp</td>
+        <td class="grid3" id = "box05">&nbsp</td>
+        <td class="grid3" id = "box06">&nbsp</td>
+        <td class="grid3" id = "box07">&nbsp</td>
+        <td class="grid3" id = "box08">&nbsp</td>
+        <td class="grid3" id = "box09">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">B</td>
+        <td class="grid3" id = "box10">&nbsp</td>
+        <td class="grid3" id = "box11">&nbsp</td>
+        <td class="grid3" id = "box12">&nbsp</td>
+        <td class="grid3" id = "box13">&nbsp</td>
+        <td class="grid3" id = "box14">&nbsp</td>
+        <td class="grid3" id = "box15">&nbsp</td>
+        <td class="grid3" id = "box16">&nbsp</td>
+        <td class="grid3" id = "box17">&nbsp</td>
+        <td class="grid3" id = "box18">&nbsp</td>
+        <td class="grid3" id = "box19">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">C</td>
+        <td class="grid3" id = "box20">&nbsp</td>
+        <td class="grid3" id = "box21">&nbsp</td>
+        <td class="grid3" id = "box22">&nbsp</td>
+        <td class="grid3" id = "box23">&nbsp</td>
+        <td class="grid3" id = "box24">&nbsp</td>
+        <td class="grid3" id = "box25">&nbsp</td>
+        <td class="grid3" id = "box26">&nbsp</td>
+        <td class="grid3" id = "box27">&nbsp</td>
+        <td class="grid3" id = "box28">&nbsp</td>
+        <td class="grid3" id = "box29">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">D</td>
+        <td class="grid3" id = "box30">&nbsp</td>
+        <td class="grid3" id = "box31">&nbsp</td>
+        <td class="grid3" id = "box32">&nbsp</td>
+        <td class="grid3" id = "box33">&nbsp</td>
+        <td class="grid3" id = "box34">&nbsp</td>
+        <td class="grid3" id = "box35">&nbsp</td>
+        <td class="grid3" id = "box36">&nbsp</td>
+        <td class="grid3" id = "box37">&nbsp</td>
+        <td class="grid3" id = "box38">&nbsp</td>
+        <td class="grid3" id = "box39">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">E</td>
+        <td class="grid3" id = "box40">&nbsp</td>
+        <td class="grid3" id = "box41">&nbsp</td>
+        <td class="grid3" id = "box42">&nbsp</td>
+        <td class="grid3" id = "box43">&nbsp</td>
+        <td class="grid3" id = "box44">&nbsp</td>
+        <td class="grid3" id = "box45">&nbsp</td>
+        <td class="grid3" id = "box46">&nbsp</td>
+        <td class="grid3" id = "box47">&nbsp</td>
+        <td class="grid3" id = "box48">&nbsp</td>
+        <td class="grid3" id = "box49">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">F</td>
+        <td class="grid3" id="box50">&nbsp</td>
+        <td class="grid3" id="box51">&nbsp</td>
+        <td class="grid3" id="box52">&nbsp</td>
+        <td class="grid3" id="box53">&nbsp</td>
+        <td class="grid3" id="box54">&nbsp</td>
+        <td class="grid3" id="box55">&nbsp</td>
+        <td class="grid3" id="box56">&nbsp</td>
+        <td class="grid3" id="box57">&nbsp</td>
+        <td class="grid3" id="box58">&nbsp</td>
+        <td class="grid3" id="box59">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">G</td>
+        <td class="grid3" id="box60">&nbsp</td>
+        <td class="grid3" id="box61">&nbsp</td>
+        <td class="grid3" id="box62">&nbsp</td>
+        <td class="grid3" id="box63">&nbsp</td>
+        <td class="grid3" id="box64">&nbsp</td>
+        <td class="grid3" id="box65">&nbsp</td>
+        <td class="grid3" id="box66">&nbsp</td>
+        <td class="grid3" id="box67">&nbsp</td>
+        <td class="grid3" id="box68">&nbsp</td>
+        <td class="grid3" id="box69">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">H</td>
+        <td class="grid3" id="box70">&nbsp</td>
+        <td class="grid3" id="box71">&nbsp</td>
+        <td class="grid3" id="box72">&nbsp</td>
+        <td class="grid3" id="box73">&nbsp</td>
+        <td class="grid3" id="box74">&nbsp</td>
+        <td class="grid3" id="box75">&nbsp</td>
+        <td class="grid3" id="box76">&nbsp</td>
+        <td class="grid3" id="box77">&nbsp</td>
+        <td class="grid3" id="box78">&nbsp</td>
+        <td class="grid3" id="box79">&nbsp</td>
+      </tr>
+
+       <tr>
+        <td class="ycoord">I</td>
+        <td class="grid3" id="box80">&nbsp</td>
+        <td class="grid3" id="box81">&nbsp</td>
+        <td class="grid3" id="box82">&nbsp</td>
+        <td class="grid3" id="box83">&nbsp</td>
+        <td class="grid3" id="box84">&nbsp</td>
+        <td class="grid3" id="box85">&nbsp</td>
+        <td class="grid3" id="box86">&nbsp</td>
+        <td class="grid3" id="box87">&nbsp</td>
+        <td class="grid3" id="box88">&nbsp</td>
+        <td class="grid3" id="box89">&nbsp</td>
+      </tr>
+
+      <tr>
+        <td class="ycoord">J</td>
+        <td class="grid3" id="box90">&nbsp</td>
+        <td class="grid3" id="box91">&nbsp</td>
+        <td class="grid3" id="box92">&nbsp</td>
+        <td class="grid3" id="box93">&nbsp</td>
+        <td class="grid3" id="box94">&nbsp</td>
+        <td class="grid3" id="box95">&nbsp</td>
+        <td class="grid3" id="box96">&nbsp</td>
+        <td class="grid3" id="box97">&nbsp</td>
+        <td class="grid3" id="box98">&nbsp</td>
+        <td class="grid3" id="box99">&nbsp</td>
+      </tr>
+
+  </table>
+  </div>
+  
+  <div id="transparentBG">
+    
+  </div>
+  
+  <div id="divGrid2">
+  <table id="layoutGrid">
+        <tr>
+        <th> </th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+      </tr>
+
+      <tr>
+        <td class="ycoord">A</td>
+        <td class="grid2">A0</td>
         <td class="grid2">A1</td>
         <td class="grid2">A2</td>
         <td class="grid2">A3</td>
@@ -218,11 +390,11 @@
         <td class="grid2">A7</td>
         <td class="grid2">A8</td>
         <td class="grid2">A9</td>
-        <td class="grid2">A10</td>
       </tr>
 
       <tr>
         <td class="ycoord">B</td>
+        <td class="grid2">B0</td>
         <td class="grid2">B1</td>
         <td class="grid2">B2</td>
         <td class="grid2">B3</td>
@@ -232,11 +404,11 @@
         <td class="grid2">B7</td>
         <td class="grid2">B8</td>
         <td class="grid2">B9</td>
-        <td class="grid2">B10</td>
       </tr>
 
       <tr>
         <td class="ycoord">C</td>
+        <td class="grid2">C0</td>
         <td class="grid2">C1</td>
         <td class="grid2">C2</td>
         <td class="grid2">C3</td>
@@ -246,11 +418,11 @@
         <td class="grid2">C7</td>
         <td class="grid2">C8</td>
         <td class="grid2">C9</td>
-        <td class="grid2">C10</td>
       </tr>
 
       <tr>
         <td class="ycoord">D</td>
+        <td class="grid2">D0</td>
         <td class="grid2">D1</td>
         <td class="grid2">D2</td>
         <td class="grid2">D3</td>
@@ -260,11 +432,11 @@
         <td class="grid2">D7</td>
         <td class="grid2">D8</td>
         <td class="grid2">D9</td>
-        <td class="grid2">D10</td>
       </tr>
 
       <tr>
         <td class="ycoord">E</td>
+        <td class="grid2">E0</td>
         <td class="grid2">E1</td>
         <td class="grid2">E2</td>
         <td class="grid2">E3</td>
@@ -274,11 +446,11 @@
         <td class="grid2">E7</td>
         <td class="grid2">E8</td>
         <td class="grid2">E9</td>
-        <td class="grid2">E10</td>
       </tr>
 
       <tr>
         <td class="ycoord">F</td>
+        <td class="grid2">F0</td>
         <td class="grid2">F1</td>
         <td class="grid2">F2</td>
         <td class="grid2">F3</td>
@@ -288,11 +460,11 @@
         <td class="grid2">F7</td>
         <td class="grid2">F8</td>
         <td class="grid2">F9</td>
-        <td class="grid2">F10</td>
       </tr>
 
       <tr>
         <td class="ycoord">G</td>
+        <td class="grid2">G0</td>
         <td class="grid2">G1</td>
         <td class="grid2">G2</td>
         <td class="grid2">G3</td>
@@ -302,11 +474,11 @@
         <td class="grid2">G7</td>
         <td class="grid2">G8</td>
         <td class="grid2">G9</td>
-        <td class="grid2">G10</td>
       </tr>
 
       <tr>
         <td class="ycoord">H</td>
+        <td class="grid2">H0</td>
         <td class="grid2">H1</td>
         <td class="grid2">H2</td>
         <td class="grid2">H3</td>
@@ -316,12 +488,12 @@
         <td class="grid2">H7</td>
         <td class="grid2">H8</td>
         <td class="grid2">H9</td>
-        <td class="grid2">H10</td>
       </tr>
 
        <tr>
         <td class="ycoord">I</td>
-        <td class="grid2">I2</td>
+        <td class="grid2">I0</td>
+        <td class="grid2">I1</td>
         <td class="grid2">I2</td>
         <td class="grid2">I3</td>
         <td class="grid2">I4</td>
@@ -330,11 +502,11 @@
         <td class="grid2">I7</td>
         <td class="grid2">I8</td>
         <td class="grid2">I9</td>
-        <td class="grid2">I10</td>
       </tr>
 
       <tr>
         <td class="ycoord">J</td>
+        <td class="grid2">J0</td>
         <td class="grid2">J1</td>
         <td class="grid2">J2</td>
         <td class="grid2">J3</td>
@@ -344,15 +516,102 @@
         <td class="grid2">J7</td>
         <td class="grid2">J8</td>
         <td class="grid2">J9</td>
-        <td class="grid2">J10</td>
       </tr>
 
   </table>
   </div>
+  
+  <div id="shipWindow">
+    <div id="shipForm">
+    <h1>Enter Ship Coordinates:</h1>
+    <p>Ship Size &nbsp;&nbsp;&nbsp; Coords &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Direction Facing</p>
+    <form>
+        <!--Ship1-->
+        <ul>
+        <li><img src="/assets/Ship5.png" alt="Ship5" class="shipImage5"><br></li>
+        <li><input type="text" name="letterCoord1" id="letterCoord1" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord1" id="numberCoord1" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection1V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection1H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      <br>
+      <form>
+        <!--Ship2-->
+        <ul>
+        <li><img src="/assets/Ship4.png" alt="Ship4" class="shipImage4"><br></li>
+        <li><input type="text" name="letterCoord2" id="letterCoord2" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord2" id="numberCoord2" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection2V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection2H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      <br>      
+       <form>
+         <!--Ship3-->
+        <ul>
+        <li><img src="/assets/Ship4.png" alt="Ship4" class="shipImage4"><br></li>
+        <li><input type="text" name="letterCoord3" id="letterCoord3" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord3" id="numberCoord3" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection3V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection3H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      <br>
+      <form>
+        <!--Ship4-->
+        <ul>
+        <li><img src="/assets/Ship3.png" alt="Ship3" class="shipImage3"><br></li>
+        <li><input type="text" name="letterCoord4" id="letterCoord4" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord4" id="numberCoord4" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection4V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection4H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      <br>
+      <form>
+        <!--Ship5-->
+        <ul>
+        <li><img src="/assets/Ship3.png" alt="Ship3" class="shipImage3"><br></li>
+        <li><input type="text" name="letterCoord5" id="letterCoord5" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord5" id="numberCoord5" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection5V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection5H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      <br>
+      <form>
+        <!--Ship6-->
+        <ul>
+        <li><img src="/assets/Ship2.png" alt="Ship2" class="shipImage2"><br></li>
+        <li><input type="text" name="letterCoord6" id="letterCoord6" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord6" id="numberCoord6" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection6V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection6H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      <br>
+      <form>
+        <!--Ship7-->
+        <ul>
+        <li><img src="/assets/Ship2.png" alt="Ship2" class="shipImage2"><br></li>
+        <li><input type="text" name="letterCoord7" id="letterCoord7" maxlength="1"><br></li>
+        <li><input type="text" name="numberCoord7" id="numberCoord7" maxlength="1"><br></li>
+        <li><label><input type="radio" name="shipDirection" value="Vertical" id="shipDirection7V">Vertical (Facing North)<br></label></li>
+        <li><label><input type="radio" name="shipDirection" value="Horizontal" id="shipDirection7H">Horizontal (Facing East)<br></label></li>
+        </ul>
+      </form>
+      </div>
+      <br>
+      <button type="button" onmouseover="playclip();" onclick="shipSubmit();putShipsOnPage();sendScoresToRails();" id="shipSubmit">Submit</button>
+      <!--generateBotShips();-->
+      <button type="button" onmouseover="playclip();" onclick="validate();" id="shipValidate">Validate</button>
+  </div>
 
 
-  <audio controls autoplay loop id="backgroundMusic">
-      <source src="/assets/oceanSounds2.mp3" type="audio/mp3">
+
+  <audio controls autoplay loop class="backgroundMusic">
+      <source src="/assets/sinbadTheme.mp3" type="audio/mp3">
   </audio>
   <audio>
     <source src="/assets/grid.mp3">
@@ -360,15 +619,24 @@
   <audio>
     <source src="/assets/target.mp3">
   </audio>
+  <audio>
+    <source src="/assets/jetSound.mp3">
+  </audio>
+    <audio controls autoplay loop class="backgroundMusic">
+      <source src="/assets/oceanSounds2.mp3" type="audio/mp3">
+  </audio>
 
+<div id="turn">
+  <h2 id="turnText">Your Turn</h2><br>
+  <img src="/assets/yourTurn.gif" alt="Monkey" id="imgBorder">
+</div>
+
+<div id="loadingWheelDiv">
+  <img src="/assets/loadingWheel2.gif" alt="LoadingWheel" id="loadingWheel">
+</div>
 
   </main>
 
-
-  <aside id="turn">
-    <img src="/assets/yourTurn.gif" alt="Monkey" class="imgBorder" style="position:absolute; top:250px; left:150px; width:100px; height:100px;">
-    <img src="/assets/theirTurn.jpg" alt="Monkey" class="imgBorder" style="position:absolute; top:450px; left:150px; width:100px; height:100px;">
-  </aside>
 
     <footer>
       

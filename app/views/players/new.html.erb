@@ -1,7 +1,17 @@
-<h2>Enter a Username and Password</h2>
 
+
+  
+<body>
+  <header>
+      <img src="/assets/Title.png" alt="Title" class="title">
+    </header>
+
+<main>
+    <h1>Enter a Username and Password</h1>
 <%= form_for @player do |f| %>
+
   <p>
+<<<<<<< HEAD
     <%= f.label :userName %><br>
     <%= f.text_field :userName %>
   </p>
@@ -9,8 +19,34 @@
   
  
   <p>
-    <%= f.submit %>
+=======
+    <%= f.label :userName %> <span id="text"><%= f.label :password %></span>
+    <br>
+    <%= f.text_field :userName %> <span id="box"><%= f.text_field :password %></span>
   </p>
+
+  <div id="submitButton">
+>>>>>>> 74eaa0b2eda6fcd7fcd578f72dfbdc94caddc4a7
+    <%= f.submit %>
+  </div>
+
 <% end %>
+
+<!--<div>
+      <% if current_user %>
+        Signed in as <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+    </div>
+    <div>
+    <%= yield %>
+</div>-->
+
+</body>
+</main>
+
+
 
 <%= link_to 'Back', root_path %>
