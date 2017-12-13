@@ -14,8 +14,7 @@ ActiveRecord::Schema.define(version: 20171210053947) do
 
   create_table "players", force: :cascade do |t|
     t.string "userName"
-    t.boolean "isBott"
-    t.string "password"
+    t.boolean "isBot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +22,16 @@ ActiveRecord::Schema.define(version: 20171210053947) do
   create_table "scores", force: :cascade do |t|
     t.decimal "score"
     t.integer "playerId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.integer "playerId"
+    t.string "directionFacing"
+    t.integer "size"
+    t.integer "coord1"
+    t.integer "coord2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

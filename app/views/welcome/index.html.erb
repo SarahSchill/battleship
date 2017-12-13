@@ -5,8 +5,6 @@
 		<meta charset="UTF-8">
 		<title>PracticeBattleship</title>
 		<link rel="stylesheet" type="text/css" href="index.css">
-	    <%= stylesheet_link_tag "index.css"%>
-        <%= javascript_include_tag "index.js" %>
 		<script type="text/javascript" src="index.js"></script>
 	</head>
 
@@ -22,7 +20,11 @@
 	<main>
 		
 	<audio controls autoplay loop id="backgroundMusic">
-  		<source src="/assets/startTheme.mp3" type="audio/mp3">
+<<<<<<<<< saved version
+
+=========
+  		<source src="/assets/oceanSounds2.mp3" type="audio/mp3">
+>>>>>>>>> local version
 	</audio>
 	<audio>
 		<source src="/assets/grid.mp3">
@@ -41,7 +43,7 @@
   <div id="otherButtons">
       <button type="button" id="optionsButton" onclick="options();">Options</button>
       <%= link_to 'Start', scores_url, id: "scoresButton", onmouseover: "playclip();" %>
-      <button type="button" id="scoresButton">Scores</button>
+      <!--<button type="button" id="scoresButton">Scores</button>-->
   </div>
   
   	<div id="options">
